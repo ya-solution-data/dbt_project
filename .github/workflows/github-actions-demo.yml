@@ -27,13 +27,14 @@ jobs:
         run: |
           python3 -m venv venv
           source venv/bin/activate
+          venv/bin/python
       - name: Verify pip installation
         run: |
           pip --version 
       - run: echo "Installing dependencies from requirements.txt."
       - name: Installing dependencies
         run: |
-          pip install -r requirements.txt
+          python -m pip install dbt-core dbt-duckdb
       - run: echo "Installing dbt packages."
       - name: Install dbt packages
         run: |
