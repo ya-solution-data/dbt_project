@@ -22,6 +22,14 @@ jobs:
       - name: Verify python installation
         run: |
           python3 --version
+      - run: echo "Creating and activating a virtual environment."
+      - name: Set up virtual environment
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+      - name: Verify pip installation
+        run: |
+          pip --version 
       - run: echo "Installing dependencies from requirements.txt."
       - name: Installing dependencies
         run: |
