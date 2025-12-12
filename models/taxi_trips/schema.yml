@@ -1,0 +1,57 @@
+
+version: 2
+
+models:
+  - name: taxi_data_clean
+    description: "A starter dbt model"
+    columns:
+      - name: passenger_count
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 1
+              inclusive: false
+      - name: trip_distance
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              inclusive: false
+      - name: RatecodeID
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4, 5, 6, 7, 8]
+                quote: false
+      - name: store_and_fwd_flag
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Y', 'N']
+      - name: tpep_pickup_datetime
+        data_tests:
+          - is_greater_than:
+              arguments:
+                field: tpep_dropoff_datetime
+
+  - name: taxi_data_parsed
+    description: "A parsed taxi data model with additional features"
+    columns:
+      - name: VendorID
+      - name: tpep_pickup_datetime
+      - name: tpep_dropoff_datetime
+      - name: passenger_count
+      - name: trip_distance
+      - name: RatecodeID
+      - name: payment_type
+      - name: fare_amount
+      - name: extra
+      - name: tip_amount
+      - name: tolls_amount
+      - name: improvement_surcharge
+      - name: total_amount
+      - name: congestion_surcharge
+      - name: Airport_fee
+      - name: cbd_congestion_fee                                                                                                                        

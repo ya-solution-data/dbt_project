@@ -1,0 +1,7 @@
+dbt_project_profile:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: './database/database.duckdb'
+      schema: 'main'

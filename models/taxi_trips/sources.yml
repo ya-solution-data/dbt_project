@@ -1,0 +1,8 @@
+sources:
+  - name: taxi_data_source
+    description: "Source data for taxi trips"
+    meta:
+      external_location: "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-01.parquet"
+    tables:
+      - name: raw_taxi_data
+        description: "Raw taxi trip data"
