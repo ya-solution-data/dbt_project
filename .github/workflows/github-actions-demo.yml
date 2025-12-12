@@ -15,4 +15,23 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - run: echo "Installing python."
+      - name: Install pyton
+        run: |
+          sudo apt-get install python3
+      - name: Verify python installation
+        run: |
+          python3 --version
+      - run: echo "Installing dependencies from requirements.txt."
+      - name: Installing dependencies
+        run: |
+          pip install -r requirements.txt
+      - run: echo "Installing dbt packages."
+      - name: Install dbt packages
+        run: |
+          dbt deps
+      - run: echo "Running dbt tests."
+      - name: Run dbt tests
+        run: |
+          dbt test
       - run: echo "🍏 This job's status is ${{ job.status }}."
